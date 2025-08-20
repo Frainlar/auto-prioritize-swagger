@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link href="/public/styles.css" rel="stylesheet" />
+  <title><%- block('title', 'Creator' ) %></title>
+</head>
+
+<body class="bg-light">
+  <nav class="navbar navbar-dark bg-dark mb-3">
+    <div class="container">
+      <a class="navbar-brand" href="/">Creator</a>
+      <a class="btn btn-sm btn-outline-light" href="/api/health">Health</a>
+    </div>
+  </nav>
+  <div class="container mb-5">
+    <%- body %>
+  </div>
+</body>
+
+</html>

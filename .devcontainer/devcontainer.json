@@ -1,10 +1,17 @@
 {
   "name": "Auto Prioritize Swagger",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
-  "forwardPorts": [3000],
+  "forwardPorts": [
+    11434
+  ],
+  "postCreateCommand": "bash -lc 'if ! command -v ollama >/dev/null; then curl -fsSL https://ollama.com/install.sh | sh; fi'",
+  "postStartCommand": "bash -lc 'pgrep -x ollama >/dev/null || (nohup env OLLAMA_HOST=0.0.0.0:11434 ollama serve >/workspaces/ollama.log 2>&1 &)'",
   "customizations": {
     "vscode": {
-      "extensions": ["GitHub.copilot", "GitHub.copilot-chat"]
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ]
     }
   }
 }

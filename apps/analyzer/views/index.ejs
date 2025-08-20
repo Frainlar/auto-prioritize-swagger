@@ -1,0 +1,33 @@
+<% layout('layout') -%>
+  <% block('title', 'Analyzer' ) %>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3 class="mb-0">Analyzed Stories</h3>
+    </div>
+
+    <% if (!results.length) { %>
+      <div class="alert alert-info">No stories analyzed yet. Submit one from the Creator app.</div>
+      <% } %>
+
+        <div class="row g-3">
+          <% results.forEach(r=> { %>
+            <div class="col-12 col-md-6">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <%= r.title %>
+                  </h5>
+                  <p class="text-muted small mb-1">ID: <%= r.id %> · <%= new Date(r.createdAt).toLocaleString() %>
+                  </p>
+                  <span class="badge text-bg-primary">
+                    <%= r.analysis.priority %>
+                  </span>
+                  <p class="mt-2">
+                    <%= r.analysis.description %>
+                  </p>
+                  <a class="btn btn-sm btn-dark" href="/detail/<%= r.id %>">View</a>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+        </div>
